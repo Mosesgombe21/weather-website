@@ -134,6 +134,43 @@ async function fetchWeather(lat, lon) {
 }
 
 /**
+ * Apply background theme based on weather code
+ * @param {number} weatherCode - The weather code from the API
+ */
+function applyWeatherBackground(weatherCode) {
+    // Remove all weather background classes
+    document.body.classList.remove(
+        'weather-clear',
+        'weather-mainly-clear',
+        'weather-partly-cloudy',
+        'weather-overcast',
+        'weather-foggy',
+        'weather-rainy',
+        'weather-snow',
+        'weather-thunderstorm'
+    );
+
+    // Apply appropriate class based on weather code
+    if (weatherCode === 0) {
+        document.body.classList.add('weather-clear');
+    } else if (weatherCode === 1) {
+        document.body.classList.add('weather-mainly-clear');
+    } else if (weatherCode === 2 || weatherCode === 3) {
+        document.body.classList.add('weather-partly-cloudy');
+    } else if (weatherCode === 3) {
+        document.body.classList.add('weather-overcast');
+    } else if (weatherCode === 45 || weatherCode === 48) {
+        document.body.classList.add('weather-foggy');
+    } else if ((weatherCode >= 51 && weatherCode <= 67) || (weatherCode >= 80 && weatherCode <= 82)) {
+        document.body.classList.add('weather-rainy');
+    } else if ((weatherCode >= 71 && weatherCode <= 77) || (weatherCode === 85 || weatherCode === 86)) {
+        document.body.classList.add('weather-snow');
+    } else if (weatherCode === 95 || weatherCode === 96 || weatherCode === 99) {
+        document.body.classList.add('weather-thunderstorm');
+    }
+}
+
+/**
  * Display weather information on the page
  * @param {Object} data - Weather data from API
  */
@@ -160,6 +197,9 @@ function displayWeather(data) {
 
     // Weather icon
     elements.weatherIcon.textContent = weatherInfo.icon;
+
+    // Apply background based on weather
+    applyWeatherBackground(current.weather_code);
 
     // Weather details
     displayWeatherDetails(current);
