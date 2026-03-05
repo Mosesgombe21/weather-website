@@ -30,6 +30,40 @@ body {
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
+    transition: background 0.8s ease-in-out;
+}
+
+/* Weather-based background themes */
+body.weather-clear {
+    background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #0284c7 100%);
+}
+
+body.weather-mainly-clear {
+    background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #0284c7 100%);
+}
+
+body.weather-partly-cloudy {
+    background: linear-gradient(135deg, #64748b 0%, #475569 50%, #334155 100%);
+}
+
+body.weather-overcast {
+    background: linear-gradient(135deg, #475569 0%, #334155 50%, #1e293b 100%);
+}
+
+body.weather-foggy {
+    background: linear-gradient(135deg, #78716c 0%, #57534e 50%, #292524 100%);
+}
+
+body.weather-rainy {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 50%, #0c4a6e 100%);
+}
+
+body.weather-snow {
+    background: linear-gradient(135deg, #cbd5e1 0%, #e2e8f0 50%, #f1f5f9 100%);
+}
+
+body.weather-thunderstorm {
+    background: linear-gradient(135deg, #2d1b3d 0%, #1a1a2e 50%, #16213e 100%);
 }
 
 /* Animated background elements */
@@ -648,4 +682,10 @@ header {
 
 .hidden {
     display: none;
+}
+
+.footer{
+    background-color: rgb(32, 66, 129);
+    text-align: center;
+    padding: 50px;
 }
